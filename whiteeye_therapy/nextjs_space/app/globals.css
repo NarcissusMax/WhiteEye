@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* the whiteeye palette — the black room. forced dark everywhere. */
+    --background: 0 0% 3.5%;
+    --foreground: 0 0% 92%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 92%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 92%;
+
+    /* deep blue — his color */
+    --primary: 214 90% 56%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 11%;
+    --secondary-foreground: 0 0% 92%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 55%;
+
+    --accent: 214 60% 20%;
+    --accent-foreground: 0 0% 96%;
+
+    /* red — the sky in the castle */
+    --destructive: 0 74% 52%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 214 90% 56%;
+
+    --radius: 0.5rem;
+    --radius-sm: calc(0.5rem - 4px);
+    --radius-lg: calc(0.5rem + 4px);
+    --radius-full: 9999px;
+
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.4);
+    --shadow-md: 0 6px 18px -4px rgb(0 0 0 / 0.6);
+    --shadow-lg: 0 20px 40px -12px rgb(0 0 0 / 0.75);
+
+    --duration-fast: 150ms;
+    --duration-normal: 250ms;
+    --duration-slow: 350ms;
+
+    --we-blue: 214 90% 58%;
+    --we-red: 0 74% 52%;
+  }
+
+  /* mirror the palette onto .dark so any dark-scoped tokens match */
+  .dark {
+    --background: 0 0% 3.5%;
+    --foreground: 0 0% 92%;
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 92%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 92%;
+    --primary: 214 90% 56%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 11%;
+    --secondary-foreground: 0 0% 92%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 55%;
+    --accent: 214 60% 20%;
+    --accent-foreground: 0 0% 96%;
+    --destructive: 0 74% 52%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 214 90% 56%;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: hsl(var(--we-blue) / 0.3);
+    color: hsl(0 0% 100%);
+  }
+
+  ::-webkit-scrollbar { width: 7px; height: 7px; }
+  ::-webkit-scrollbar-track { background-color: transparent; }
+  ::-webkit-scrollbar-thumb { background-color: hsl(var(--we-blue) / 0.25); border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { background-color: hsl(var(--we-blue) / 0.45); }
+
+  /* hide hydration error overlays per guidelines */
+  [data-hydration-error] { display: none !important; }
+}
+
+@layer utilities {
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+  .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* deep radial vignette — the room closing in around you */
+  .room-vignette {
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 40%, hsl(214 90% 20% / 0.10), transparent 70%),
+      radial-gradient(circle at 50% 120%, hsl(0 74% 40% / 0.05), transparent 60%),
+      #060606;
+  }
+
+  .text-blue { color: hsl(var(--we-blue)); }
+  .text-red { color: hsl(var(--we-red)); }
+
+  /* the pupil / eye glow */
+  .eye-glow {
+    filter: drop-shadow(0 0 6px hsl(var(--we-blue) / 0.55)) drop-shadow(0 0 18px hsl(var(--we-blue) / 0.25));
+  }
+
+  .glass-panel {
+    background: hsl(0 0% 7% / 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* text that emerges from darkness */
+  .emerge {
+    animation: emerge 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+}
+
+@keyframes emerge {
+  from { opacity: 0; transform: translateY(10px); filter: blur(6px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@keyframes eyePulse {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.12); opacity: 1; }
+}
+
+@keyframes irisBreathe {
+  0%, 100% { r: 7; opacity: 0.9; }
+  50% { r: 9; opacity: 1; }
+}
+
+@keyframes blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  96% { transform: scaleY(0.06); }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 0.9; }
+  48% { opacity: 0.9; }
+  50% { opacity: 0.55; }
+  52% { opacity: 0.9; }
+}
+
+@keyframes slowfloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes caret {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-eye-pulse { animation: eyePulse 2.6s ease-in-out infinite; transform-origin: center; }
+.animate-blink { animation: blink 6s ease-in-out infinite; transform-origin: center; }
+.animate-flicker { animation: flicker 5s ease-in-out infinite; }
+.animate-slowfloat { animation: slowfloat 7s ease-in-out infinite; }
+.caret-blink::after { content: '█'; margin-left: 1px; animation: caret 1s step-end infinite; color: hsl(var(--we-blue)); }
