@@ -1,0 +1,179 @@
+/* Course notes, engraved chapter illustrations, and a map of actual relationships. */
+.rail-graph { display:flex; align-items:center; margin:0 0 12px; padding:12px; font-size:13px; color:var(--brass); border:1px solid #af9a7b38; background:#af9a7b08; transition:background-color .2s,transform .2s; }
+.rail-graph[aria-current] { border-color:var(--accent);color:var(--accent);background:#dc8d9810; }
+.chapter-art { margin:0 0 28px; position:relative; }
+.chapter-art-frame { height:230px; overflow:hidden; position:relative; background:var(--bg); border:1px solid #af9a7b30; }
+.chapter-art-frame::after { content:'';position:absolute;inset:0;box-shadow:inset 0 0 50px #0b090b80; pointer-events:none; }
+.chapter-image { width:100%;height:100%;object-fit:cover;display:block;opacity:.85; transform:scale(1.015); }
+.chapter-art figcaption { color:var(--brass);font-size:12px;line-height:1.5;letter-spacing:.035em; margin-top:12px; }
+.reader-header .chapter-art { margin-bottom:30px; }
+.chapter-card { position:relative; overflow:hidden;grid-template-columns:35px 1fr; }
+.chapter-card .compact-art { grid-column:1/-1; margin:0 -24px 4px; }
+.chapter-card .chapter-art-frame { height:135px; border:0;border-bottom:1px solid var(--line); }
+.chapter-card .chapter-image { object-position:50% 53%;opacity:.7;transition:transform .8s var(--ease-room),opacity .5s; }
+.chapter-card > div { position:relative; }
+.graph-invitation { display:grid;grid-template-columns:250px 1fr;align-items:center;gap:30px;margin:34px 0 48px;padding:24px 34px;border:1px solid #af9a7b50;background:linear-gradient(115deg,#af9a7b08,#8737470a);position:relative;overflow:hidden; }
+.graph-invitation-copy h2 { font:32px/1.2 var(--serif);margin:6px 0 10px; }
+.graph-invitation-copy p { color:var(--muted);font-size:14px;line-height:1.8;margin:0; }
+.graph-invitation-copy .text-link { color:var(--brass);font-size:14px;margin-top:8px; }
+.map-emblem svg { display:block;width:100%;height:auto;overflow:visible; }
+.map-emblem path { fill:none;stroke:var(--brass);stroke-width:.65;opacity:.5;stroke-dasharray:7 4; }
+.map-emblem circle { fill:var(--brass);stroke:#eee6d920;stroke-width:5;transform-box:fill-box;transform-origin:center; }
+.lesson-journey { margin:0 0 38px; }
+.lesson-journey > .course-note-label { font-size:12px;margin-bottom:18px; }
+.journey-steps { display:flex;justify-content:space-between;gap:16px;position:relative;isolation:isolate; }
+.journey-steps::before { content:'';position:absolute;top:17px;left:20px;right:20px;height:1px;background:var(--line);z-index:-1; }
+.journey-steps::after { content:'';position:absolute;top:16px;left:25px;width:24%;height:2px;background:linear-gradient(90deg,transparent,var(--brass),transparent);pointer-events:none;z-index:-1; }
+.journey-step { display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--muted);font-size:13px;min-width:58px; }
+.journey-step-number { display:grid;place-items:center;width:35px;height:35px;border:1px solid var(--line);border-radius:50%;background:var(--bg);color:var(--brass);font:italic 13px var(--serif);transition:background-color .25s,border-color .25s,transform .3s var(--ease-room); }
+.journey-step[aria-current] .journey-step-number { border-color:var(--accent);background:var(--wine);color:var(--ivory);transform:scale(1.12); }
+.journey-step[aria-current] {color:var(--ivory);}
+.lesson-connections { border:1px solid var(--line);padding:28px;margin:40px 0;background:linear-gradient(135deg,#af9a7b06,transparent); }
+.lesson-connections h2 { font:26px/1.2 var(--serif);margin:8px 0 25px; }
+.connection-diagram { display:grid;grid-template-columns:1fr 1.3fr;align-items:center;gap:34px; }
+.connection-origin { display:flex;flex-direction:column;gap:9px;text-align:center;padding:22px 14px;border:1px solid #af9a7b70;position:relative;background:var(--chrome); }
+.connection-origin > span { color:var(--brass);font:italic 19px var(--serif); }
+.connection-origin strong { font:19px/1.45 var(--serif); }
+.connection-origin::after { content:'';position:absolute;top:50%;left:100%;width:18px;height:1px;background:var(--brass); }
+.connection-branches { display:flex;flex-direction:column;gap:12px;position:relative; }
+.connection-branches::before {content:'';position:absolute;top:24px;bottom:24px;left:-17px;width:1px;background:var(--line);}
+.connection-branch { position:relative;display:flex;flex-direction:column;gap:7px;padding:13px 15px;border:1px solid var(--line);font:15px/1.5 var(--serif);transition:transform .25s,border-color .25s; }
+.connection-branch::before { content:'';position:absolute;top:50%;left:-18px;width:17px;height:1px;background:var(--brass); }
+.connection-branch small { font:11px/1.5 var(--sans);color:var(--brass); }
+.lesson-connections p { font-size:13px;line-height:1.8;color:var(--muted); }
+.lesson-connections > .text-link {font-size:13px;margin-top:16px;}
+.reader-toc .toc-map {color:var(--brass);margin-top:18px;}
+/* The map is a working surface: controls, map, and the selected lesson stay together. */
+.graph-page {padding:36px 32px 26px;max-width:1700px;margin:auto;}
+.graph-header {display:flex;align-items:center;justify-content:space-between;gap:25px;margin-bottom:28px;}
+.graph-header h1 {font:400 clamp(32px,3.8vw,50px)/1.1 var(--serif);letter-spacing:-.03em;margin:8px 0 12px;}
+.graph-header p {font-size:15px;line-height:1.7;color:var(--muted);margin:0;}
+.graph-header .text-link {white-space:nowrap;font-size:13px;}
+.graph-toolbar {display:flex;align-items:end;gap:20px;padding:18px 0 22px;}
+.graph-toolbar label {font-size:12px;color:var(--muted);line-height:1.4;}
+.graph-search {flex:1;min-width:130px;}
+.graph-filter {flex:1;min-width:170px;}
+.graph-toolbar :is(input[type='search'],select) {display:block;width:100%;height:45px;margin-top:8px;color:var(--ivory);background:var(--chrome);border:1px solid var(--line);border-radius:2px;padding:10px 12px;font:14px var(--sans);}
+.graph-toolbar select {max-width:310px;}
+.graph-toolbar select option {background:var(--chrome);}
+.graph-focus {display:flex;align-items:center;gap:10px;min-height:45px;max-width:145px;}
+.graph-focus input {accent-color:var(--accent);width:17px;height:17px;flex-shrink:0;}
+.graph-body {display:grid;grid-template-columns:minmax(0,1fr) 275px;border:1px solid var(--line);background:var(--chrome);}
+.graph-stage {position:relative;height:650px;min-width:0;overflow:hidden;background:radial-gradient(ellipse at 45% 45%,#af9a7b08,transparent 70%),#0b090b;}
+.knowledge-canvas {display:block;width:100%;height:100%;cursor:grab;touch-action:none;}
+.knowledge-canvas:active {cursor:grabbing;}
+.graph-tools {position:absolute;top:15px;left:15px;display:flex;gap:5px;background:#100d0ff0;border:1px solid var(--line);padding:4px;}
+.graph-tools button {min-height:38px;min-width:35px;padding:7px 10px;color:var(--muted);font-size:12px;border:1px solid transparent;}
+.graph-tools button:first-child,.graph-tools button:nth-child(2) {font-size:20px;}
+.graph-tools button:hover {color:var(--ivory);border-color:var(--line);background:var(--surface);}
+.graph-status {position:absolute;right:15px;top:25px;color:var(--dim);font-size:12px;pointer-events:none;font-variant-numeric:tabular-nums;}
+.graph-hint {position:absolute;bottom:12px;left:12px;right:12px;text-align:center;color:var(--dim);font-size:11px;pointer-events:none;margin:0;background:#0b090bb0;padding:6px;}
+.graph-tooltip {position:absolute;z-index:2;pointer-events:none;background:var(--surface);border:1px solid #af9a7b80;color:var(--ivory);font-size:12px;padding:9px 12px;max-width:250px;line-height:1.5;box-shadow:0 6px 25px #0008;}
+.graph-inspector {border-left:1px solid var(--line);padding:22px;max-height:650px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--line) transparent;}
+.graph-detail .course-note-label {font-size:11px;margin-bottom:12px;}
+.graph-detail h2 {font:26px/1.3 var(--serif);margin:0 0 15px;overflow-wrap:anywhere;}
+.graph-detail p {font-size:14px;color:var(--muted);line-height:1.75;margin:10px 0 18px;}
+.graph-detail h3 {font:19px var(--serif);margin:25px 0 12px;}
+.graph-detail .course-button {width:100%;font-size:14px;margin:5px 0 8px;}
+.graph-detail .compact-art {margin:-22px -22px 22px;}
+.graph-detail .chapter-art-frame {height:145px;border:0;border-bottom:1px solid var(--line);}
+.graph-detail .text-link {font-size:12px;line-height:1.6;margin-top:10px;}
+.graph-phases {display:grid;gap:15px;margin:24px 0;color:var(--muted);font-size:13px;line-height:1.5;}
+.graph-phases > div {display:flex;align-items:center;gap:12px;}
+.graph-phases i {display:block;width:7px;height:7px;flex-shrink:0;border-radius:50%;}
+.graph-related {display:flex;flex-direction:column;gap:7px;line-height:1.5;text-align:left;font-size:13px;padding:12px 0;border-bottom:1px solid var(--line);width:100%;color:var(--muted);}
+.graph-related small {color:var(--brass);font-size:11px;}
+.graph-completed-label {display:block;color:var(--accent);font-size:13px;margin:15px 0;}
+.graph-directory {margin-top:22px;border-top:1px solid var(--line);padding-top:18px;}
+.graph-directory summary {font-size:14px;color:var(--brass);cursor:pointer;min-height:30px;}
+.graph-list-status {color:var(--dim);font-size:12px;line-height:1.6;margin:8px 0 10px;}
+.graph-results {max-height:260px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--line) transparent;}
+.graph-result {display:flex;align-items:baseline;gap:10px;min-height:44px;padding:10px 5px;font-size:13px;line-height:1.5;text-align:left;color:var(--muted);width:100%;border-bottom:1px solid #39303260;}
+.graph-result-id {font-size:11px;color:var(--brass);font-variant-numeric:tabular-nums;}
+.graph-result-done {color:var(--accent);}
+.graph-result[aria-pressed='true'] {background:#87374730;color:var(--ivory);}
+.graph-legend {display:flex;flex-wrap:wrap;gap:16px 25px;font-size:12px;color:var(--muted);padding:20px 0 8px;}
+.graph-legend > span {display:flex;align-items:center;gap:9px;}
+.graph-legend i {display:block;width:20px;height:0;border-top:1px solid var(--brass);}
+.graph-legend .legend-module i {opacity:.5;}
+.graph-legend .legend-comparison i {border-top:1px dashed var(--accent);}
+.graph-legend .legend-completed i {width:9px;height:9px;border:1px solid var(--ivory);border-radius:50%;outline:1px solid var(--brass);outline-offset:3px;margin:0 6px;}
+.graph-explanation {font-size:12px;color:var(--dim);line-height:1.8;max-width:850px;}
+/* Deliberate, visible motion. Existing preference controls govern every effect. */
+html:not([data-motion='paused']):not(.page-inactive) .art-in-view .chapter-image {animation:engraving-drift 18s ease-in-out infinite alternate;}
+html:not([data-motion='paused']):not(.page-inactive) .art-in-view .map-emblem path {animation:map-line-flow 8s linear infinite;}
+html:not([data-motion='paused']):not(.page-inactive) .art-in-view .map-emblem circle {animation:map-node-breathe 4s ease-in-out infinite alternate;}
+html:not([data-motion='paused']):not(.page-inactive) .art-in-view .journey-steps::after {animation:journey-trace 5s ease-in-out infinite;}
+@keyframes engraving-drift {from {transform:scale(1.015) translateY(0);} to {transform:scale(1.08) translateY(-1%);}}
+@keyframes map-line-flow {to{stroke-dashoffset:-44;}}
+@keyframes map-node-breathe {from{opacity:.65;transform:scale(.88);}to{opacity:1;transform:scale(1.12);}}
+@keyframes journey-trace {0%{transform:translateX(0);opacity:0;}20%{opacity:1;}80%{opacity:1;}100%{transform:translateX(300%);opacity:0;}}
+@media(hover:hover) and (pointer:fine) {
+  .chapter-card:hover .chapter-image {transform:scale(1.08);opacity:1;}
+  .graph-invitation:hover {border-color:var(--brass);}
+  .graph-invitation:hover .text-link {transform:translateX(7px);}
+  .rail-graph:hover,.connection-branch:hover {transform:translateX(3px);border-color:var(--brass);}
+  .journey-step:hover .journey-step-number {transform:translateY(-4px);border-color:var(--brass);}
+  .graph-result:hover,.graph-related:hover {color:var(--ivory);background:#af9a7b0b;}
+}
+@media(min-width:1700px) {.graph-stage,.graph-inspector {height:740px;max-height:740px;}}
+@media(max-width:1250px) {
+  .graph-body {grid-template-columns:minmax(0,1fr);}
+  .graph-inspector {border-left:0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:28px;max-height:none;}
+  .graph-directory {margin:0;padding:0;border:0;}
+  .graph-detail .compact-art {margin:0 0 18px;}
+  .graph-stage {height:620px;}
+  .graph-invitation {grid-template-columns:180px 1fr;padding:20px;gap:18px;}
+}
+@media(max-width:760px) {
+  .chapter-art-frame {height:205px;}
+  .reader-header .chapter-art {margin-top:0;}
+  .graph-page {padding:24px 20px;}
+  .graph-header {display:block;margin-bottom:12px;}
+  .graph-header .text-link {margin-top:12px;}
+  .graph-toolbar {flex-wrap:wrap;gap:12px;}
+  .graph-search {flex-basis:100%;}
+  .graph-filter {flex:1;}
+  .graph-focus {max-width:135px;}
+  .graph-stage {height:530px;}
+  .graph-inspector {grid-template-columns:1fr;padding:20px;gap:20px;}
+  .graph-detail .chapter-art-frame {height:155px;}
+  .graph-directory {border-top:1px solid var(--line);padding-top:20px;}
+  .graph-status {top:76px;left:20px;right:auto;}
+  .graph-hint {font-size:10px;}
+  .graph-results {max-height:225px;}
+  .graph-invitation {grid-template-columns:1fr;gap:0;padding:22px;}
+  .map-emblem {max-width:215px;justify-self:center;}
+  .graph-invitation-copy h2 {font-size:29px;}
+  .lesson-connections {padding:20px;}
+  .connection-diagram {grid-template-columns:1fr;gap:25px;}
+  .connection-origin {padding:16px;}
+  .connection-origin::after {top:100%;left:50%;width:1px;height:25px;}
+  .connection-branches {padding-left:17px;}
+  .connection-branches::before {left:0;}
+  .connection-branch::before {left:-18px;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .course-room :is(.chapter-image,.map-emblem path,.map-emblem circle,.journey-steps::after) {animation:none !important;}
+}
+
+.course-switcher { display:flex;gap:4px;margin:-8px -8px 20px;padding:4px;border:1px solid var(--line);background:var(--bg); }
+.course-switcher a { flex:1;padding:9px 7px;font-size:12px;line-height:1.5;color:var(--muted);text-align:center; }
+.course-switcher a[aria-current] { background:#87374735;color:var(--ivory); }
+.course-switcher a:hover {color:var(--accent);}
+.integrated-course .course-concept {font:16px/1.95 var(--sans);color:var(--muted);margin:24px 0;}
+.course-concept p {margin:0 0 20px;}
+.course-example {padding:24px 28px;background:#af9a7b08;border-left:2px solid var(--brass);margin:30px 0;}
+.course-example h3 {font:24px/1.35 var(--serif);margin:8px 0 15px;}
+.course-example p {font:16px/1.85 var(--serif);margin:0 0 15px;color:var(--muted);}
+.course-model {margin:32px 0;padding:25px 0;border-block:1px solid var(--line);}
+.course-model h3 {font:24px/1.3 var(--serif);margin:8px 0 25px;}
+.course-model-steps {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;list-style:none;padding:0;margin:0;}
+.course-model-steps li {position:relative;padding:18px;border:1px solid var(--line);background:var(--chrome);}
+.course-model-steps li:not(:last-child)::after {content:'→';position:absolute;right:-14px;top:27px;z-index:1;color:var(--brass);}
+.model-number {display:block;font:italic 20px var(--serif);color:var(--brass);margin-bottom:14px;}
+.course-model-steps strong {font:19px/1.4 var(--serif);font-weight:400;}
+.course-model-steps p {font-size:13px;line-height:1.8;color:var(--muted);margin:12px 0 0;}
+.course-answer {font:17px/1.9 var(--serif);padding:20px 0 25px;white-space:pre-wrap;border-top:1px solid var(--line);}
+.integrated-course .course-paragraph {font-size:15px;}
+@media(max-width:600px) {.course-model-steps {grid-template-columns:1fr;}.course-model-steps li:not(:last-child)::after {content:'↓';right:auto;left:27px;top:100%;}.course-example {padding:22px;}}

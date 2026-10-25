@@ -1,0 +1,122 @@
+/* Shared dark styling; Blood gothic retains the saved crimson folio palette. */
+:root[data-theme='blood'] {
+  color-scheme:dark;
+  --bg:#100d10; --chrome:#100d10; --surface:#1b161d; --surface-raised:#231c24;
+  --ivory:#f4eade; --muted:#c5b8bd; --dim:#aa9aa2; --line:#574650;
+  --accent:#d98295; --wine:#d98295; --brass:#b4a5a5;
+  --action-fill:#82182c; --action-hover:#98233a; --on-accent:#fff1e8;
+  --accent-soft:#a1273b24; --accent-tint:#a1273b3d; --ink-faint:#eee7db0d;
+  --notice-bg:#a1273b16; --notice-line:#a1273b5c;
+  --brand-art:url('/assets/blood/cutout-6-dd61a97d78c3.webp');
+  --wordmark-art:url('/assets/blood/cutout-70-962ff1556b4b.webp');
+  --footer-art:url('/assets/blood/cutout-87-ba727e3cd350.webp');
+  --opening-art:url('/assets/blood/cutout-3-66706a613915.webp');
+  --graph-node:#b4a5a0; --graph-edge:#b4a5a0; --graph-label-bg:#100d10ee;
+}
+body { background-color:var(--bg); }
+.theme-toggle {
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  min-width:44px; min-height:44px; padding:8px 11px; flex-shrink:0;
+  font:12px var(--serif); color:var(--ivory); background:none;
+  border:1px solid var(--line); border-radius:1px;
+  transition:background-color 160ms var(--ease-room),border-color 160ms var(--ease-room);
+}
+.theme-toggle:hover { background:var(--ink-faint); border-color:var(--muted); }
+.theme-toggle:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
+.theme-picker { position:relative; flex-shrink:0; }
+.theme-picker > summary { cursor:pointer; list-style:none; }
+.theme-picker > summary::-webkit-details-marker { display:none; }
+.masthead:has(.theme-picker[open]) { z-index:30; }
+.theme-options {
+  position:absolute; z-index:40; top:calc(100% + 10px); right:0;
+  width:240px; max-width:calc(100vw - 24px); padding:8px;
+  background:var(--surface-raised); color:var(--ivory); border:1px solid var(--line);
+  border-radius:8px; box-shadow:0 16px 40px #0005;
+}
+.theme-options > p { margin:8px 12px 10px; color:var(--dim); font:11px var(--sans); letter-spacing:.08em; }
+.theme-options > button {
+  display:flex; align-items:center; gap:11px; width:100%; min-height:48px;
+  padding:11px 12px; border:1px solid transparent; border-radius:5px;
+  background:transparent; color:var(--ivory); text-align:left; font:14px var(--serif);
+}
+.theme-options > button:hover { background:var(--ink-faint); }
+.theme-options > button[aria-pressed='true'] { background:var(--accent-soft); border-color:var(--line); }
+.theme-options > button:focus-visible { outline:2px solid var(--accent); outline-offset:-2px; }
+.theme-swatch { width:17px; height:17px; border:1px solid #8888; border-radius:50%; flex-shrink:0; }
+.theme-swatch-celestial { background:linear-gradient(135deg,#080f1c 40%,#bf6b8a); }
+.theme-swatch-blood { background:linear-gradient(135deg,#1b161d 40%,#82182c); }
+.theme-swatch-parchment { background:linear-gradient(135deg,#f0ebe0 60%,#773249); }
+.theme-option-check { margin-left:auto; color:var(--accent); visibility:hidden; }
+[aria-pressed='true'] > .theme-option-check { visibility:visible; }
+html[data-appearance='blood'] img[data-celestial-src]:not([data-asset-appearance='blood']),
+html[data-appearance='celestial'] img[data-celestial-src][data-asset-appearance='blood'] { visibility:hidden; }
+.theme-glyph { fill:none; stroke:currentColor; stroke-width:1.5; flex-shrink:0; }
+.theme-sun { display:none; }
+html[data-theme='parchment'] .theme-sun { display:block; }
+html[data-theme='parchment'] .theme-moon { display:none; }
+.masthead nav { gap:clamp(14px,2vw,30px); }
+img[data-asset-theme='loading'],
+html[data-theme='blood'] img[data-asset-theme='parchment'],
+html[data-theme='parchment'] img[data-asset-theme='blood'] { visibility:hidden; }
+html[data-theme='blood'] .ambient {
+  background-image:url('/assets/blood/clean-0-6e3216c741ed.webp');
+  /* The left ground region contains grain only; the illustration is placed once. */
+  background-size:250% auto; background-position:left top; background-repeat:no-repeat;
+  background-blend-mode:luminosity;
+}
+html[data-theme='blood'] .welcome-art > img {
+  inset:0 0 0 auto; width:100%; height:100%; max-width:100%; object-fit:contain;
+}
+html[data-theme='blood'] .welcome-mark img { width:38px; height:48px; object-fit:contain; }
+html[data-theme='blood'][data-wordmark='ready'] .welcome[data-persona='whiteeye'] h1 { aspect-ratio:3.63; }
+html[data-theme='blood'] :is(.hero-art img,.chapter-image,.reading-art) {
+  filter:none; mix-blend-mode:normal;
+}
+html[data-theme='blood'] .nav-link.active { color:var(--ivory); }
+html[data-theme='blood'] .nav-link.active::after { background:var(--action-fill); height:2px; }
+html[data-theme='blood'] .new-chat { border-color:var(--action-fill); }
+html[data-theme='blood'] .folder-item[aria-pressed='true'] { color:var(--ivory); }
+html[data-theme='blood'] .message.user { background:var(--ink-faint); }
+html[data-theme='blood'] .folder-item:hover,
+html[data-theme='blood'] .history-entry:hover,
+html[data-theme='blood'] .history-entry:has(.history-item.active) { background:var(--ink-faint); }
+html[data-theme='blood'] .model-option:hover,
+html[data-theme='blood'] .model-option:focus-visible { background:var(--accent-soft); }
+html[data-theme='blood'] .model-option[aria-checked='true'] { background:var(--accent-tint); }
+html[data-theme='blood'] .chapter-card::before { background:none; }
+html[data-theme='blood'] .course-example { background:var(--ink-faint); }
+html[data-theme='blood'] :is(.graph-result[aria-pressed='true'],.rail-lesson[aria-current],.rail-overview[aria-current],.rail-graph[aria-current]) { background:var(--accent-soft); }
+html[data-theme='blood'] .music-track:hover,
+html[data-theme='blood'] .music-track:focus-visible { background:var(--ink-faint); }
+html[data-theme='blood'] .sidebar-toggle > span {
+  display:block; width:21px; height:19px; font-size:0;
+  background:url('/assets/blood/cutout-5-53d18347bc78.webp') center/contain no-repeat;
+}
+html[data-theme='blood'] #delete > span {
+  display:block; width:15px; height:15px; font-size:0;
+  background:url('/assets/blood/cutout-65-0a964f7dffec.webp') center/contain no-repeat;
+}
+html[data-theme='blood'] .folder-item[data-folder='unfiled'] > svg {
+  color:transparent; background:url('/assets/blood/cutout-29-acdc5427a057.webp') center/16px 14px no-repeat;
+}
+html[data-theme='blood'] ::selection { background:#98273f; color:#fff1e8; }
+@media (max-width:1100px) {
+  .theme-toggle [data-theme-label] { display:none; }
+  .masthead nav { gap:16px; }
+}
+@media (max-width:760px) {
+  .masthead nav { gap:8px; margin-right:0; }
+  body:not(.course-room) .masthead #connection { display:none; }
+  .theme-toggle { padding:8px; width:42px; min-width:42px; height:44px; }
+  .course-masthead nav { gap:10px; }
+  .course-masthead .nav-link[href='/'] { display:none; }
+  .course-masthead .brand { flex-shrink:1; }
+  html[data-brand-art='ready'] .masthead .brand { width:156px; }
+}
+@media (max-width:420px) {
+  .masthead { padding-inline:15px; }
+  html[data-brand-art='ready'] .masthead .brand { width:145px; }
+  .course-masthead { padding-inline:12px; gap:8px; }
+  html[data-brand-art='ready'] .course-masthead .brand { width:122px; }
+  .course-masthead nav { gap:8px; }
+}

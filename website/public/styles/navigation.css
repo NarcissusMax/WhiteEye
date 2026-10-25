@@ -1,0 +1,172 @@
+/* Conversation tools use the existing engraved-room palette and fine rules. */
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+.sidebar-toggle {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  font-size: 19px;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  transition: color .18s, background .18s;
+}
+.sidebar-toggle:hover {
+  color: var(--ivory);
+  background: var(--surface);
+}
+.conversation-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+.conversation-body > .scroll-region {
+  min-width: 0;
+}
+.message-navigation {
+  width: 40px;
+  flex: 0 0 40px;
+  display: flex;
+  flex-direction: column;
+  margin-block: 16px;
+  border-left: 1px solid var(--line);
+}
+.message-navigation[hidden] {
+  display: none;
+}
+.message-markers {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+.message-markers::-webkit-scrollbar {
+  display: none;
+}
+.marker-track {
+  position: relative;
+}
+.message-marker,
+.message-shortcut {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 28px;
+  padding: 0;
+  color: var(--dim);
+  background: transparent;
+  border: 0;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+.message-marker {
+  position: absolute;
+  left: 0;
+  content-visibility: auto;
+}
+.marker-line {
+  height: 2px;
+  width: 12px;
+  flex-shrink: 0;
+  background: currentColor;
+  transition: background .18s, transform .18s;
+}
+.marker-line.user {
+  width: 24px;
+}
+.message-marker:hover,
+.message-shortcut:hover:not(:disabled) {
+  color: var(--ivory);
+  background: #eee6d90a;
+}
+.message-marker[aria-current] {
+  color: var(--accent);
+}
+.message-marker[aria-current]::after {
+  content: "";
+  position: absolute;
+  right: 2px;
+  width: 3px;
+  height: 3px;
+  background: currentColor;
+}
+.message-marker:focus-visible,
+.message-shortcut:focus-visible,
+.sidebar-toggle:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: -2px;
+  color: var(--ivory);
+}
+.message-shortcuts {
+  flex-shrink: 0;
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+}
+.message-shortcut {
+  height: 40px;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+}
+.message-shortcut:disabled {
+  opacity: .3;
+  cursor: default;
+}
+.has-message-navigation .scroll-region {
+  scroll-behavior: auto;
+}
+.has-message-navigation .message {
+  scroll-margin-top: 24px;
+}
+.history-entry {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 100px;
+}
+@media (min-width: 761px) {
+  .sidebar-collapsed .sidebar {
+    display: none;
+  }
+  .has-message-navigation .messages {
+    padding-inline: clamp(24px, 3vw, 40px);
+  }
+}
+@media (max-width: 760px) {
+  .sidebar-toggle {
+    display: none;
+  }
+  .brand-group {
+    gap: 0;
+  }
+  .message-navigation {
+    margin-block: 8px;
+    margin-right: env(safe-area-inset-right);
+  }
+  .has-message-navigation .messages {
+    padding-inline: 16px 10px;
+  }
+  .has-message-navigation .message.user {
+    width: 100%;
+  }
+}
+@media (pointer: coarse) {
+  .message-marker,
+  .message-shortcut {
+    height: 44px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marker-line,
+  .sidebar-toggle {
+    transition: none;
+  }
+}
+:root[data-motion="paused"] .marker-line,
+:root[data-motion="paused"] .sidebar-toggle {
+  transition: none;
+}

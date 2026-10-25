@@ -1,0 +1,84 @@
+/* A finite title sequence: traced eye, revealed type, engraved setting, dissolve. */
+.entrance {
+  background:var(--bg); color:var(--ivory);
+  opacity:1; transition:opacity 350ms var(--ease-room);
+}
+.entrance::backdrop { background:transparent; }
+html[data-theme='blood'] .entrance {
+  background-image:url('/assets/blood/clean-0-d03917981a47.webp');
+  background-size:250% auto; background-position:left top; background-repeat:no-repeat;
+  background-blend-mode:luminosity;
+}
+.entrance-center {
+  left:13.5%; top:45%; width:39%; transform:translateY(-50%);
+  text-align:center; transition:none;
+}
+.entrance-eye { position:relative; width:76px; height:80px; margin:0 auto 34px; opacity:1; animation:none; }
+.entrance-eye svg,.opening-eye-art { position:absolute; inset:0; width:100%; height:100%; }
+.entrance-eye svg { overflow:visible; color:var(--action-fill); opacity:0; }
+.entrance-eye svg :is(path,circle) { stroke:currentColor; stroke-width:1.6; }
+.entrance-eye svg .opening-pupil { stroke:none; fill:var(--ivory); }
+.opening-eye-art { object-fit:contain; opacity:1; }
+.entrance h2 {
+  width:100%; margin:0; color:var(--ivory); font-size:clamp(72px,9vw,150px);
+  line-height:1.15; letter-spacing:-.04em; animation:none; text-shadow:none;
+}
+html[data-opening-art='ready'] .entrance h2 {
+  background:var(--opening-art) center/contain no-repeat; color:transparent;
+  aspect-ratio:3.8;
+}
+.entrance-line { display:block; width:96px; height:1px; background:var(--action-fill); margin:24px auto 20px; animation:none; }
+.entrance p { margin:0; color:var(--ivory); font:italic clamp(17px,1.6vw,23px)/1.7 var(--serif); animation:none; }
+.entrance-art {
+  inset:10.3% 0 auto auto; width:36%; height:79.1%; opacity:1;
+  object-fit:contain; object-position:right center; mask-image:none;
+  transform:none; animation:none; transition:none;
+}
+html[data-theme='parchment'] .entrance-art { filter:grayscale(1) invert(1); }
+html[data-theme='parchment'] .opening-eye-art { filter:saturate(.6); }
+.skip-entrance {
+  left:33%; bottom:13.4%; min-height:56px; padding:14px 30px;
+  font:16px var(--serif); color:var(--on-accent); background:var(--action-fill);
+  border:1px solid var(--action-fill); transform:translateX(-50%); opacity:1;
+}
+.skip-entrance:hover { background:var(--action-hover); border-color:var(--action-hover); color:var(--on-accent); }
+.skip-entrance span { margin-left:24px; color:inherit; }
+.entrance.leaving { opacity:0; background-color:var(--bg); }
+.entrance.leaving .entrance-center { opacity:1; transform:translateY(-50%); }
+.entrance.leaving .entrance-art,.entrance.leaving .skip-entrance { opacity:1; transform:none; transition:none; }
+.entrance.leaving .skip-entrance { transform:translateX(-50%); }
+@media (prefers-reduced-motion:no-preference) {
+  html:not([data-motion='paused']) .entrance[open] .entrance-eye svg { animation:opening-trace-layer 1100ms var(--ease-room) both; }
+  html:not([data-motion='paused']) .entrance[open] .opening-outline { stroke-dasharray:1; animation:opening-trace 700ms var(--ease-room) both; }
+  html:not([data-motion='paused']) .entrance[open] .opening-iris { stroke-dasharray:1; animation:opening-trace 650ms var(--ease-room) 180ms both; }
+  html:not([data-motion='paused']) .entrance[open] .opening-rays { stroke-dasharray:1; animation:opening-trace 600ms var(--ease-room) 300ms both; }
+  html:not([data-motion='paused']) .entrance[open] .opening-pupil { animation:opening-fade 400ms var(--ease-room) 400ms both; }
+  html:not([data-motion='paused']) .entrance[open] .opening-eye-art { animation:opening-fade 400ms var(--ease-room) 700ms both; }
+  html:not([data-motion='paused']) .entrance[open] h2 { animation:opening-wordmark 1000ms var(--ease-room) 420ms both; }
+  html:not([data-motion='paused']) .entrance[open] .entrance-line { animation:opening-rule 650ms var(--ease-room) 780ms both; }
+  html:not([data-motion='paused']) .entrance[open] p { animation:opening-caption 650ms var(--ease-room) 950ms both; }
+  html:not([data-motion='paused']) .entrance[open] .entrance-art { animation:opening-artwork 1800ms var(--ease-room) 300ms both; }
+}
+@keyframes opening-trace { from { stroke-dashoffset:1; opacity:0; } 12% { opacity:1; } to { stroke-dashoffset:0; opacity:1; } }
+@keyframes opening-trace-layer { 0%,65% { opacity:1; } to { opacity:0; } }
+@keyframes opening-fade { from { opacity:0; } to { opacity:1; } }
+@keyframes opening-wordmark { from { opacity:0; clip-path:inset(0 100% 0 0); transform:translateY(8px); } to { opacity:1; clip-path:inset(0); transform:translateY(0); } }
+@keyframes opening-rule { from { transform:scaleX(0); } to { transform:scaleX(1); } }
+@keyframes opening-caption { from { opacity:0; transform:translateY(7px); } to { opacity:1; transform:translateY(0); } }
+@keyframes opening-artwork { from { opacity:0; clip-path:inset(0 0 0 55%); transform:translateX(14px); } to { opacity:1; clip-path:inset(0); transform:translateX(0); } }
+@media (max-width:760px) {
+  .entrance-center { top:46%; left:7%; width:86%; }
+  .entrance h2 { font-size:clamp(68px,20vw,110px); }
+  .entrance-eye { margin-bottom:28px; width:66px; height:70px; }
+  .entrance-line { margin-block:22px 18px; width:72px; }
+  .entrance p { font-size:18px; }
+  .entrance-art { display:none; }
+  .skip-entrance { left:50%; bottom:max(12%,env(safe-area-inset-bottom)); min-height:52px; }
+}
+@media (max-height:600px) {
+  .entrance-center { top:42%; }
+  .entrance-eye { width:48px; height:50px; margin-bottom:15px; }
+  .entrance h2 { font-size:clamp(60px,8vw,96px); }
+  .entrance-line { margin-block:14px 12px; }
+  .skip-entrance { bottom:6%; }
+}

@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en" data-theme="blood" data-appearance="blood">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="theme-color" content="#100d10">
+    <script src="/js/theme.js"></script>
+    <meta name="description"
+      content="An attentive conversation. A different perspective. Meet WhiteEye through a source-grounded interpretation of his words and worldview.">
+    <title>WhiteEye — A different perspective</title>
+    <link rel="icon" href="/assets/eye.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/entrance.css">
+    <link rel="stylesheet" href="/styles/immersive.css">
+    <link rel="stylesheet" href="/styles/music.css">
+    <link rel="stylesheet" href="/styles/navigation.css">
+    <link rel="stylesheet" href="/styles/library.css">
+    <link rel="stylesheet" href="/styles/course-entry.css">
+    <link rel="stylesheet" href="/styles/quiet.css">
+    <link rel="stylesheet" href="/styles/themes.css">
+    <link rel="stylesheet" href="/styles/opening.css">
+    <link rel="stylesheet" href="/styles/satin.css">
+    <link rel="stylesheet" href="/styles/celestial.css">
+    <link rel="preload" href="/assets/unifraktur-maguntia.ttf" as="font" type="font/ttf"
+      crossorigin>
+    <script type="module" src="/js/presentation.js"></script>
+    <script type="module" src="/js/music.js"></script>
+    <script type="module" src="/js/app.js"></script>
+    <script type="module" src="/js/course-entry.js"></script>
+    <script type="module" src="/js/interface-motion.js"></script>
+  </head>
+  <body>
+    <dialog id="entrance" class="entrance" aria-labelledby="entrance-title"
+      aria-describedby="entrance-description">
+      <img class="entrance-art" src="/assets/blood/cutout-1-9b382c2bdf41.webp" data-blood-src="/assets/blood/cutout-1-9b382c2bdf41.webp" data-celestial-src="/assets/celestial/upscaled-plate-1-9d2f367f7122.webp" data-asset-appearance="blood" data-parchment-src="/assets/blood/cutout-1-9b382c2bdf41.webp" data-asset-theme="blood" width="1680"
+        height="960" alt="" aria-hidden="true">
+      <div class="entrance-gate gate-left" aria-hidden="true"></div>
+      <div class="entrance-gate gate-right" aria-hidden="true"></div>
+      <div class="entrance-halo" aria-hidden="true"></div>
+      <div class="entrance-vault" aria-hidden="true"></div>
+      <div class="entrance-center">
+        <div class="entrance-eye" aria-hidden="true"><svg viewBox="0 0 64 64" width="76" height="76" fill="none"><path class="opening-outline" pathLength="1" d="M5 32s11-13 27-13 27 13 27 13-11 13-27 13S5 32 5 32Z"/><circle class="opening-iris" pathLength="1" cx="32" cy="32" r="9"/><path class="opening-pupil" d="M32 24c-3 5-3 11 0 16 3-5 3-11 0-16Z"/><path class="opening-rays" pathLength="1" d="M32 3v10m0 38v10M13 13l5 5m28 28 5 5M51 13l-5 5M18 46l-5 5"/></svg><img class="opening-eye-art" src="/assets/blood/cutout-2-3b62caa060df.webp" width="146" height="156" alt=""></div>
+        <h2 id="entrance-title">WhiteEye</h2>
+        <span class="entrance-line" aria-hidden="true"></span>
+        <p id="entrance-description">The conversation is yours.</p>
+      </div>
+      <button id="skip-entrance" class="skip-entrance"
+        autofocus>Enter conversation <span aria-hidden="true">↗</span></button>
+    </dialog>
+    <a class="skip" href="#main">Skip to conversation</a>
+    <div class="ambient" aria-hidden="true"></div>
+    <header class="masthead">
+      <div
+        class="brand-group"><button id="sidebar-toggle" class="icon-button sidebar-toggle" type="button"
+        aria-label="Collapse conversation sidebar" aria-controls="sidebar" aria-expanded="true"
+        title="Collapse conversation sidebar"><span aria-hidden="true">☰</span></button>
+      <a class="brand" href="/"
+        aria-label="WhiteEye home"><img src="/assets/satin/cutout-7-e56444a85567.webp" data-blood-src="/assets/satin/cutout-7-e56444a85567.webp" data-parchment-src="/assets/eye.svg" data-asset-theme="blood" width="38" height="38" alt=""><span>WhiteEye</span></a></div>
+      <nav
+        aria-label="Main navigation"><button class="nav-link active" data-view="conversation">Conversation</button><button class="nav-link" data-view="reading">The perspective</button><a class="nav-link course-entry" href="/course/">Course I</a><a class="nav-link course-entry" href="/course-2/">Course II</a><details class="course-menu"><summary>Courses</summary><div class="course-menu-panel"><a href="/course/">Course I · WhiteEye</a><a href="/course-2/">Course II · Integrated</a></div></details><details class="theme-picker"><summary class="theme-toggle" data-theme-toggle aria-label="Choose appearance; current: Blood gothic" title="Choose appearance"><svg class="theme-glyph" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path class="theme-moon" d="M19.5 15.5A8.2 8.2 0 0 1 8.5 4.5 8.2 8.2 0 1 0 19.5 15.5Z"/><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g></svg><span data-theme-label>Blood gothic</span></summary><div class="theme-options" role="group" aria-label="Choose appearance"><p>Appearance</p><button type="button" data-theme-option="celestial" aria-pressed="false"><span class="theme-swatch theme-swatch-celestial" aria-hidden="true"></span><span>Celestial gothic</span><span class="theme-option-check" aria-hidden="true">✓</span></button><button type="button" data-theme-option="blood" aria-pressed="true"><span class="theme-swatch theme-swatch-blood" aria-hidden="true"></span><span>Blood gothic</span><span class="theme-option-check" aria-hidden="true">✓</span></button><button type="button" data-theme-option="parchment" aria-pressed="false"><span class="theme-swatch theme-swatch-parchment" aria-hidden="true"></span><span>Parchment</span><span class="theme-option-check" aria-hidden="true">✓</span></button></div></details><span class="nav-rule"></span><button id="connection" class="connection" aria-label="Connection status"><span class="status-dot"></span><span id="connection-label">Connection</span></button></nav>
+      <button class="icon-button mobile-history" id="mobile-history"
+        aria-label="Open conversation history" aria-controls="sidebar"
+        aria-expanded="false">☰</button>
+    </header>
+    <div class="workspace">
+      <aside class="sidebar" id="sidebar" aria-label="Conversation history">
+        <button id="new-chat"
+          class="new-chat"><span aria-hidden="true">＋</span> A new conversation <kbd>⌘ K</kbd></button>
+        <div
+          class="library-search"><label class="sr-only" for="history-search">Search conversation titles</label><span aria-hidden="true">⌕</span><input id="history-search" name="history-search" type="search" autocomplete="off" placeholder="Search conversations…"><button id="clear-search" type="button" aria-label="Clear conversation search" hidden>×</button></div>
+        <nav class="folder-navigation" aria-label="Conversation folders">
+          <div
+            class="folder-heading"><span>Folders</span><button id="new-folder" class="icon-button" type="button" aria-label="Create a folder" title="Create a folder"><span aria-hidden="true">＋</span></button></div>
+          <div id="folder-list" class="folder-list"></div>
+        </nav>
+        <div class="sidebar-top">
+          <div
+            class="history-heading"><span id="history-heading">Your conversations</span><small id="history-results"></small></div>
+          <div
+            class="library-heading-actions"><button id="folder-options" class="icon-button" type="button" aria-label="Folder options" title="Rename or remove this folder" hidden>⋯</button><button class="icon-button close-sidebar" id="close-sidebar" aria-label="Close history">×</button></div>
+        </div>
+        <ul id="history" class="history" aria-label="Saved conversations"></ul>
+        <details class="library-settings">
+          <summary>Library settings <span aria-hidden="true">⌄</span></summary>
+          <button id="clear-history" class="clear-history" type="button"
+            disabled><span>Clear history</span><small
+            id="clear-history-count">Unstarred chats only</small></button>
+          <label class="sidebar-memory"
+            for="sidebar-memory"><span class="memory-copy"><strong>Prior-chat memory</strong><small>Use allowed chats in future replies</small></span><input id="sidebar-memory" name="prior-chat-memory" type="checkbox" aria-label="Use prior chats as memory"></label>
+        </details>
+        <div
+          class="sidebar-foot"><div class="sidebar-emblem" aria-hidden="true"><img class="emblem-tracery" src="/assets/rose-window.svg" width="100" height="100" alt=""><img src="/assets/eye.svg" width="46" height="46" alt=""></div><p>“My favorite question is <br><em>Who am I?</em>”</p><span class="quote-attribution">WhiteEye, June 2026</span><div class="side-divider"></div><button class="quiet-button sidebar-reading" data-view="reading">The perspective <span aria-hidden="true">↗</span></button><span class="local-note">Saved on this device</span><button class="quiet-button" id="privacy">About this space <span aria-hidden="true">↗</span></button></div>
+      </aside>
+      <button id="scrim" class="scrim" aria-label="Close conversation history" hidden></button>
+      <main id="main" tabindex="-1">
+        <section id="conversation-view" class="conversation-view">
+          <div class="room-top">
+            <span
+              class="room-label"><img src="/assets/satin/cutout-48-74ee5794f722.webp" data-blood-src="/assets/satin/cutout-48-74ee5794f722.webp" data-celestial-src="/assets/celestial/cutout-53-431a5148a063.webp" data-asset-appearance="blood" data-parchment-src="/assets/quiet/cutout-51-ff68c0d2bc83.webp" data-asset-theme="blood" width="22" height="22" alt=""> Conversation</span>
+            <div class="persona-controls">
+              <label for="persona-select">Speaking with
+                <select id="persona-select" name="persona" autocomplete="off" aria-label="Choose who replies">
+                  <option value="whiteeye">WhiteEye</option><option value="griffith">Griffith</option><option value="imp">IMP</option><option value="tate">Andrew Tate</option><option value="jane">Patrick Jane</option><option value="vegeta">Vegeta</option><option value="vesper">Vesper · combined</option>
+                </select>
+              </label>
+              <label for="participant-select" id="participant-control">You are
+                <select id="participant-select" name="participant" autocomplete="off" aria-label="Your identity in this conversation">
+                  <option value="guest">A guest</option><option value="griffith">SNMX</option>
+                </select>
+              </label>
+              <div id="model-control"><span>Model</span>
+                <div class="model-picker">
+                  <button id="model-select" class="model-trigger" type="button"
+                    aria-label="Choose the model for this conversation" aria-haspopup="menu"
+                    aria-expanded="false" aria-controls="model-options" disabled><span
+                      id="model-selected">Loading…</span><span class="model-chevron"
+                      aria-hidden="true">⌄</span></button>
+                  <div id="model-options" class="model-options" role="menu"
+                    aria-label="Available models" hidden></div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="room-actions"><button id="export" class="quiet-button" title="Export conversation">Export <span aria-hidden="true">↓</span></button><button id="delete" class="icon-button" aria-label="Delete this conversation" title="Delete conversation"><span aria-hidden="true">×</span></button></div>
+          </div>
+          <div class="conversation-body">
+            <div class="scroll-region" id="scroll-region">
+              <div class="welcome" id="welcome">
+                <div class="welcome-art" aria-hidden="true"><img src="/assets/satin/clean-2-c3522b655c64.webp" data-blood-src="/assets/satin/clean-2-c3522b655c64.webp" data-celestial-src="/assets/celestial/upscaled-plate-1-9d2f367f7122.webp" data-asset-appearance="blood" data-parchment-src="/assets/quiet/clean-0-d699c5e4a767.webp" data-asset-theme="blood" width="1680" height="960" fetchpriority="high" alt=""></div>
+                <div class="welcome-copy">
+                  <div class="welcome-mark"
+                    aria-hidden="true"><span></span><img src="/assets/satin/cutout-64-0d5961c2c0cd.webp" data-blood-src="/assets/satin/cutout-64-0d5961c2c0cd.webp" data-celestial-src="/assets/celestial/cutout-69-7c4f465cac20.webp" data-asset-appearance="blood" data-parchment-src="/assets/quiet/cutout-68-c7a9aa07b014.webp" data-asset-theme="blood" width="44" height="44" alt=""><span></span></div>
+                  <h1>WhiteEye</h1>
+                  <p class="welcome-subtitle">A different perspective.</p>
+                  <p class="intro">Say what’s on your mind.<br>We can start there.</p>
+                  <div class="starters" aria-label="Conversation starters">
+                    <button
+                      data-prompt="I feel like I’m falling behind in life."><span>I feel like I’m falling behind.</span><span class="starter-arrow" aria-hidden="true">↗</span></button>
+                    <button
+                      data-prompt="What does being free mean to you?"><span>What does it mean to be free?</span><span class="starter-arrow" aria-hidden="true">↗</span></button>
+                    <button
+                      data-prompt="What have you enjoyed playing? Tell me about your favorite games."><span>Let’s talk about something lighter.</span><span class="starter-arrow" aria-hidden="true">↗</span></button>
+                  </div>
+                </div>
+              </div>
+              <div class="messages" id="messages" role="log" aria-label="Conversation messages"
+                aria-live="off"></div>
+            </div>
+            <nav id="message-navigation" class="message-navigation" aria-label="Message navigation"
+              aria-describedby="message-navigation-help" hidden>
+              <span id="message-navigation-help"
+                class="sr-only">Long markers are your prompts; short markers are responses. Use arrow keys, Home and End to navigate messages.</span>
+              <div id="message-markers" class="message-markers" role="group"
+                aria-label="Messages in chronological order">
+                <div id="marker-track" class="marker-track"></div>
+              </div>
+              <div class="message-shortcuts">
+                <button id="latest-prompt" class="message-shortcut" type="button"
+                  aria-label="Jump to your latest prompt"
+                  title="Latest prompt"><span class="marker-line user" aria-hidden="true"></span><span aria-hidden="true">↓</span></button>
+                <button id="latest-response" class="message-shortcut" type="button"
+                  aria-label="Jump to the latest response"
+                  title="Latest response"><span class="marker-line assistant" aria-hidden="true"></span><span aria-hidden="true">↓</span></button>
+              </div>
+            </nav>
+          </div>
+          <div class="composer-wrap">
+            <button class="jump-button" id="jump" hidden>Latest message ↓</button>
+            <div id="chat-notice" class="chat-notice" role="status" hidden></div>
+            <div class="error-bar" id="error" role="alert"
+              hidden><span id="error-text"></span><button id="retry">Retry ↗</button></div>
+            <form id="composer"
+              class="composer"><label class="sr-only" for="message-input">Your message to WhiteEye</label><textarea id="message-input" name="message" autocomplete="off" rows="1" placeholder="What’s on your mind?" aria-describedby="input-help"></textarea><button id="send" class="send" type="submit" aria-label="Send message" disabled>↑</button><button id="stop" class="send stop" type="button" aria-label="Stop reply" hidden>■</button></form>
+            <div
+              class="composer-foot"><span id="input-help">Enter to send <span class="foot-dot">·</span> Shift + Enter for a new line</span><span id="char-count" hidden></span><span class="interpretation">An AI interpretation. A human perspective.</span></div>
+          </div>
+        </section>
+        <section id="reading-view" class="reading-view" hidden>
+        <div class="reading-opening">
+          <div class="reading-heading"><h1>Eyes open.<br><em>Mind, too.</em></h1><p class="reading-intro">Curiosity. A little irreverence. The willingness to look again.<br>A few threads that run through WhiteEye’s own words.</p></div>
+          <img class="reading-art" src="/assets/illustrations/moonlit-sea.webp" width="1536" height="1024" loading="lazy" alt="An engraved sea beneath a crimson moon, framed by gothic stone tracery.">
+        </div>
+        <div class="reading-divider" aria-hidden="true"><span></span><img src="/assets/eye.svg" width="34" height="34" alt=""><span></span></div>
+        <div class="reading-grid">
+          <article><h2>A symbol of becoming.</h2><p>WhiteEye describes the name as a symbol of his experience and the person he wants to be. Understanding people and becoming free sit at its center.</p><span class="source-note">Direct messages, April 2025</span></article>
+          <article><h2>Look at the assumption.</h2><p>A feeling can be real without every conclusion attached to it being true. He asks what happened, what you took it to mean, and why that meaning matters.</p><span class="source-note">A recurring conversational pattern</span></article>
+          <article><h2>Not always that deep.</h2><p>Fallout. The Mentalist. Future Gohan. Jambalaya. Blue, because of the sea. The same person who unpacks a belief can spend the next moment making a ridiculous joke.</p><span class="source-note">Direct messages, May-August 2026</span></article>
+          <article><h2>Understanding isn’t the end.</h2><p>He can be generous with other people and hard on himself. Calm, then emphatic. Grateful, and still in pain. Those tensions belong here, too.</p><span class="source-note">First-person writing & direct messages</span></article>
+        </div>
+        <button class="primary-button" id="back-to-chat">Start with a conversation <span>↗</span></button><p class="reading-disclosure">Built from five supplied documents. These are paraphrases of the source material, not new quotations or a claim to be the original person.</p>
+      </section>
+      </main>
+    </div>
+    <footer
+      class="page-footer"><span>WhiteEye</span><span>There is more than one way to see.</span><div class="atmosphere-controls"><div id="music-control" class="music-control"><button id="music-toggle" class="music-toggle" type="button" aria-pressed="false" aria-label="Play background music"><span class="music-glyph" aria-hidden="true">♫</span><span id="music-label">Music off</span></button><button id="music-options" class="music-options" type="button" aria-label="Choose background music" aria-controls="music-panel" aria-expanded="false"><span aria-hidden="true">⌄</span></button><section id="music-panel" class="music-panel" aria-label="Background music" hidden><div class="music-panel-head"><h2>Soundtrack</h2><span>Choose a soundtrack</span></div><div id="music-tracks" class="music-tracks" role="group" aria-label="Choose an instrumental"></div><div id="recording-file-control" class="recording-file-control" hidden><label id="recording-file-label" for="recording-file">Audio file</label><input id="recording-file" name="recording-file" type="file" accept="audio/*,.mp3,.ogg,.m4a,.wav,.flac" aria-describedby="recording-file-help recording-file-status"><p id="recording-file-help">Choose your copy of this recording. Saved only on this device.</p><p id="recording-file-status" role="status" aria-live="polite"></p></div><div class="music-panel-foot"><label for="music-volume">Volume</label><input id="music-volume" name="music-volume" type="range" min="0" max="100" value="45" aria-label="Background music volume"><output id="music-volume-value" for="music-volume">45%</output></div><button id="music-stop" class="music-stop" type="button">Stop music</button><p id="music-status" class="music-status" role="status" aria-live="polite"></p></section></div><button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="true"><span class="motion-glyph" aria-hidden="true">◐</span><span id="motion-label">Motion on</span></button><button id="replay-entrance" class="replay-entrance" aria-label="Replay opening animation" title="Replay opening"><img src="/assets/satin/cutout-91-7c1e131a189a.webp" data-blood-src="/assets/satin/cutout-91-7c1e131a189a.webp" data-celestial-src="/assets/celestial/cutout-96-c3cc3b66dbae.webp" data-asset-appearance="blood" data-parchment-src="/assets/quiet/cutout-95-eb28abf2db15.webp" data-asset-theme="blood" width="14" height="16" alt=""></button></div></footer>
+    <dialog id="info-dialog"
+      aria-labelledby="dialog-title"><form method="dialog"><button class="dialog-close icon-button" aria-label="Close dialog">×</button></form><span class="eyebrow" id="dialog-eyebrow">ABOUT THIS SPACE</span><h2 id="dialog-title"></h2><div id="dialog-content"></div></dialog>
+    <div class="sr-only" id="announcement" role="status" aria-live="polite"></div>
+    <noscript><p class="noscript">Enable JavaScript to use WhiteEye’s conversations and reading room.</p></noscript>
+  </body>
+</html>

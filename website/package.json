@@ -1,0 +1,16 @@
+{
+  "name": "whiteeye-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prestart": "node scripts/build-site.mjs",
+    "start": "node scripts/serve-local.mjs",
+    "build": "node scripts/build-site.mjs",
+    "validate": "node scripts/validate-site.mjs"
+  },
+  "devDependencies": {
+    "drizzle-kit": "0.31.11",
+    "drizzle-orm": "0.45.3",
+    "esbuild": "0.28.2"
+  }
+}

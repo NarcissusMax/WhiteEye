@@ -1,0 +1,16 @@
+node_modules/
+dist/
+__pycache__/
+*.pyc
+*.log
+*.sqlite
+*.sqlite-*
+*.db
+.env
+.env.*
+!.env.example
+.playwright-cli/
+.superdesign/
+artifacts/
+website/private/*
+!website/private/README.md

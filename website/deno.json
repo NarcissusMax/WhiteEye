@@ -1,0 +1,27 @@
+{
+  "tasks": {
+    "start": "deno run --env-file=.env --allow-read=. --allow-net --allow-env server/main.js",
+    "dev": "deno run --watch=public,server,src/persona --env-file=.env --allow-read=. --allow-net --allow-env server/main.js",
+    "index": "deno run --allow-read --allow-write=private --allow-run=pdftotext scripts/index-sources.js",
+    "index:tate": "deno run --allow-read --allow-write=private --allow-run=pdftotext scripts/index-tate.js",
+    "index:cote": "deno run --allow-read --allow-write=private,/tmp --allow-run=pdftotext,pdftoppm,tesseract scripts/index-cote.js",
+    "test": "deno test --allow-read --allow-net=127.0.0.1 --allow-env tests/",
+    "check": "deno lint public server scripts src/persona tests && deno fmt --check public server scripts src/persona/behavioral-cases.js src/persona/canon-retrieval.js src/persona/canon.js src/persona/behavior.js src/persona/knowledge-guard.js src/persona/relationship.js src/persona/voice-scenes.js src/persona/system-prompt.js tests deno.json"
+  },
+  "fmt": {
+    "lineWidth": 100,
+    "exclude": [
+      "public/js/vendor"
+    ]
+  },
+  "lint": {
+    "rules": {
+      "exclude": [
+        "no-window"
+      ]
+    },
+    "exclude": [
+      "public/js/vendor"
+    ]
+  }
+}

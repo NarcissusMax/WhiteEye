@@ -1,0 +1,92 @@
+/* Page motion follows the existing room curve, engraved rules, and wine accent. */
+:root { --course-turn: 22px; }
+:root[data-course-direction="backward"] { --course-turn: -22px; }
+html:has(.course-room) { view-transition-name: none; }
+.course-scroll { view-transition-name: whiteeye-course; }
+::view-transition { pointer-events: none; }
+::view-transition-group(whiteeye-course) { animation-duration: 300ms; animation-timing-function: var(--ease-room); overflow: clip; }
+::view-transition-image-pair(whiteeye-course) { isolation: isolate; }
+::view-transition-old(whiteeye-course) {
+  animation: course-turn-out 200ms var(--ease-room) both;
+  mix-blend-mode: normal;
+  transform-origin: 50% 50%;
+}
+::view-transition-new(whiteeye-course) {
+  animation: course-turn-in 300ms var(--ease-room) both;
+  mix-blend-mode: normal;
+  transform-origin: 50% 50%;
+}
+@keyframes course-turn-out {
+  to { opacity: 0; transform: translateX(calc(var(--course-turn) * -1)); }
+}
+@keyframes course-turn-in {
+  from { opacity: 0; transform: translateX(var(--course-turn)); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.course-workspace::after {
+  content: ''; position: absolute; z-index: 6; left: var(--rail); top: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--brass), transparent);
+  pointer-events: none; opacity: 0; transform: scaleX(.15); transform-origin: left;
+}
+html[data-course-transition="running"] .course-workspace::after { animation: course-turn-rule 300ms var(--ease-room) both; }
+html[data-course-direction="backward"] .course-workspace::after { transform-origin: right; }
+@keyframes course-turn-rule { 0% { opacity: 0; transform: scaleX(.15); } 40% { opacity: .8; } 100% { opacity: 0; transform: scaleX(1); } }
+.motion-awaiting { opacity: 0; }
+.disclosure-content { display: flow-root; }
+.course-room :is(.rail-module, .flashcard, .journal-editor) > summary::after {
+  transition: transform 200ms var(--ease-room), color 140ms ease-out;
+  transform: rotate(0);
+}
+.course-room :is(.rail-module, .flashcard, .journal-editor)[open] > summary::after { transform: rotate(180deg); color: var(--accent); }
+.course-room :is(.rail-module, .flashcard, .journal-editor) > summary { transition: color 140ms ease-out, background-color 140ms ease-out; }
+.course-room :is(.rail-lesson, .rail-overview, .module-lesson-link, .resource-links a, .text-link, .reader-toc a) {
+  transition: color 140ms ease-out, background-color 140ms ease-out, border-color 140ms ease-out, transform 140ms var(--ease-room);
+}
+.rail-lesson::before { content: ''; position: absolute; inset: 0 auto 0 -1px; width: 2px; background: var(--accent); opacity: 0; transform: scaleY(.25); transition: transform 240ms var(--ease-room), opacity 140ms ease-out; }
+.rail-lesson[aria-current]::before { opacity: 1; transform: scaleY(1); }
+.course-button::after { transform: translateX(-65%); transition: transform 280ms var(--ease-room), opacity 140ms ease-out; }
+.course-button > span:last-child, .module-lesson-link .arrow, .resource-links a > span { display: inline-block; transition: transform 180ms var(--ease-room); }
+.course-button:focus-visible::after { opacity: 1; transform: translateX(50%); }
+.course-button:active:not(:disabled) { transform: scale(.97); }
+.practice-item, .flashcard, .journal-editor { transition: border-color 200ms ease-out, background-color 200ms ease-out; }
+.practice-item input { transition: transform 140ms var(--ease-room); }
+.practice-item input:active { transform: scale(.85); }
+.completion-box { transition: border-color 140ms ease-out, background-color 140ms ease-out, color 140ms ease-out; }
+.complete-button[aria-pressed="true"] .completion-box { background: #87374744; }
+.journal-editor textarea, .rail-search input { transition: border-color 200ms ease-out, background-color 200ms ease-out; }
+.journal-editor textarea:focus, .rail-search input:focus { border-color: #dc8d9880; background-color: #dc8d9805; }
+.motion-confirmed { animation: course-save-light 280ms var(--ease-room); }
+@keyframes course-save-light { from { color: var(--ivory); } to { color: var(--accent); } }
+.course-room .contents-dialog[open] { animation: none; }
+.course-room .contents-dialog::backdrop { animation: course-backdrop-in 200ms ease-out both; }
+@keyframes course-backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+@media (hover: hover) and (pointer: fine) {
+  .course-button:hover::after { transform: translateX(50%); opacity: 1; }
+  .next-button:hover > span:last-child { transform: translateX(4px); }
+  .rail-lesson:hover { transform: translateX(3px); }
+  .module-lesson-link:hover .arrow, .resource-links a:hover > span { transform: translateX(3px); }
+  .resource-links a:hover, .text-link:hover { transform: translateX(2px); }
+  .course-room :is(.flashcard, .journal-editor) > summary:hover { color: var(--accent); }
+  .practice-item:hover { border-color: #af9a7b70; }
+}
+@media (max-width: 760px) {
+  :root { --course-turn: 12px; }
+  :root[data-course-direction="backward"] { --course-turn: -12px; }
+}
+html[data-motion="paused"] .motion-awaiting, html.page-inactive .motion-awaiting { opacity: 1; }
+html[data-motion="paused"]::view-transition-group(*), html[data-motion="paused"]::view-transition-old(*), html[data-motion="paused"]::view-transition-new(*) { animation: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .motion-awaiting { opacity: 1; }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+  .course-room .contents-dialog::backdrop { animation: none !important; }
+}
+
+.course-click-echo { position:absolute;pointer-events:none;border-radius:50%;background:var(--ivory);z-index:3; }
+.graph-tools button,.journey-step-number,.rail-graph { position:relative;overflow:hidden; }
+.lesson-controls > * { animation:course-control-arrive 220ms var(--ease-room) both; }
+.lesson-controls > :nth-child(2) { animation-delay:60ms; }
+.lesson-controls > :nth-child(3) { animation-delay:120ms; }
+@keyframes course-control-arrive { from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);} }
+html[data-motion="paused"] .course-room *,html.page-inactive .course-room * { animation-play-state:paused !important; }
+html[data-motion="paused"] .lesson-controls > *,html.page-inactive .lesson-controls > * { animation:none !important; }
+@media(prefers-reduced-motion:reduce) {.lesson-controls > * {animation:none !important;}}

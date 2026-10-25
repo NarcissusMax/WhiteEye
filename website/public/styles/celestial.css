@@ -1,0 +1,200 @@
+/* Celestial gothic. Original 12ui candidate C; v36 remains the restore point. */
+:root[data-appearance='celestial'] {
+  --bg:#01060d; --chrome:#01060d; --surface:#0b0e17; --surface-raised:#121521;
+  --ivory:#eee9e6; --muted:#bcb5c2; --dim:#aaa4af; --line:#4d4c59;
+  --accent:#d78ca7; --wine:#d78ca7; --brass:#b4afba;
+  --action-fill:#451027; --action-hover:#641a36; --on-accent:#faeaf0;
+  --accent-soft:#91304e18; --accent-tint:#91304e35; --ink-faint:#d5dceb08;
+  --notice-bg:#91304e16; --notice-line:#91304e66;
+  --graph-node:#c0becd; --graph-edge:#77889c; --graph-label-bg:#01060df2;
+  --satin-radius:7px; --satin-edge:#62606f; --satin-lip:#a49aaa;
+  --satin-face:linear-gradient(125deg,#d3d9ee09,transparent 55%);
+  --satin-highlight:#cbd4ed1a; --satin-shadow:#00000055; --satin-reflection:#e7deed30;
+  --satin-action-top:#591b35; --satin-action-bottom:#290a1c; --satin-action-lip:#a55070;
+  --satin-glow:#90345422; --satin-glow-strong:#ba567a35; --satin-focus:#d78ca726;
+  --brand-art:url('/assets/celestial/cutout-6-6b81bddfa225.webp');
+  --wordmark-art:url('/assets/celestial/cutout-70-dff3c22137a2.webp');
+  --opening-art:var(--wordmark-art);
+  --footer-art:url('/assets/celestial/cutout-87-5dec2743282d.webp');
+}
+html[data-appearance='celestial'] .ambient { background:var(--bg); opacity:1; filter:none; }
+html[data-appearance='celestial'][data-brand-art='ready'] .brand {
+  background:var(--brand-art) left center/contain no-repeat;
+}
+html[data-appearance='celestial'][data-brand-art='ready'] .brand > img { opacity:0; }
+html[data-appearance='celestial'][data-brand-art='ready'] .brand > span { background:none; }
+html[data-appearance='celestial'][data-sidebar-art='ready'] .sidebar-toggle > span {
+  background-image:url('/assets/celestial/cutout-3-6cfddc1981ae.webp');
+}
+html[data-appearance='celestial'][data-wordmark='ready'] .welcome[data-persona='whiteeye'] h1 { aspect-ratio:3.63; }
+html[data-appearance='celestial'] :is(.masthead,.page-footer,.lesson-controls) {
+  background-color:var(--bg);
+  background-image:linear-gradient(180deg,#b9c7e407,transparent 65%);
+  box-shadow:inset 0 1px 0 #d0d7e50a;
+}
+html[data-appearance='celestial'] :is(.sidebar,.course-sidebar) {
+  background-color:var(--bg); background-image:linear-gradient(115deg,#9cbedc04,transparent 65%);
+}
+html[data-appearance='celestial'] .theme-toggle {
+  background-image:linear-gradient(110deg,#090d13,#200a15); border-color:#775664;
+}
+html[data-appearance='celestial'] :is(.persona-controls select,.model-trigger,.library-search) { background-image:none; }
+html[data-appearance='celestial'] .composer { background-color:#11101b; }
+html[data-appearance='celestial'] .room-top { border-bottom-color:#62606f; }
+html[data-appearance='celestial'] .welcome-art {
+  inset:0 0 0 40px; width:auto; height:100%; opacity:1; mask-image:none;
+}
+html[data-appearance='celestial'] .welcome-art > img {
+  inset:0; width:100%; height:100%; max-width:none;
+  object-fit:cover; object-position:right center; filter:none;
+}
+html[data-appearance='celestial'] .welcome-copy { width:51%; max-width:500px; }
+html[data-appearance='celestial'] .welcome-mark img { width:38px; height:40px; }
+html[data-appearance='celestial'] .welcome-subtitle { color:var(--ivory); }
+html[data-appearance='celestial'] .starters button { border-color:#625965; }
+html[data-appearance='celestial'] .starters button:hover { background:linear-gradient(90deg,#91304e1a,transparent); }
+html[data-appearance='celestial'] :is(.folder-name,.folder-count) { font-size:14px; }
+html[data-appearance='celestial'] .folder-count { font-variant-numeric:tabular-nums; }
+html[data-appearance='celestial'] .library-settings summary { font:13px var(--serif); }
+html[data-appearance='celestial'] .new-chat kbd { font-size:10px; }
+html[data-appearance='celestial'] :is(.page-footer,.course-footer) > :nth-child(2) { color:#d5cdd6; }
+html[data-appearance='celestial'] .page-footer > span:nth-child(2) { position:relative; font-size:13px; }
+html[data-appearance='celestial'] .page-footer > span:nth-child(2)::before,
+html[data-appearance='celestial'] .page-footer > span:nth-child(2)::after {
+  content:''; position:absolute; top:50%; width:clamp(50px,10vw,180px); height:18px;
+  transform:translateY(-50%); pointer-events:none; background:center/contain no-repeat;
+}
+html[data-appearance='celestial'] .page-footer > span:nth-child(2)::before {
+  right:calc(100% + 22px); background-image:url('/assets/celestial/cutout-88-992d8b84a2d0.webp');
+}
+html[data-appearance='celestial'] .page-footer > span:nth-child(2)::after {
+  left:calc(100% + 22px); background-image:url('/assets/celestial/cutout-89-33c2b58f817b.webp');
+}
+/* The opening uses the same real scene, then settles into the conversation. */
+html[data-appearance='celestial'] .entrance { background-image:none; }
+html[data-appearance='celestial'] .entrance-art {
+  inset:0; width:100%; height:100%; object-fit:cover; object-position:right center;
+  filter:none; mask-image:none;
+}
+html[data-appearance='celestial'] .entrance-eye svg { color:var(--accent); }
+html[data-appearance='celestial'] .entrance-line { background:linear-gradient(90deg,transparent,var(--accent),transparent); }
+/* Course surfaces use their own approved scene and retain live progress. */
+html[data-appearance='celestial'] .overview-hero { min-height:490px; }
+html[data-appearance='celestial'] .hero-art {
+  inset:0 -48px 0 -48px; width:auto; height:100%; mask-image:none;
+}
+html[data-appearance='celestial'] .hero-art img { object-position:right center; }
+html[data-appearance='celestial'] .hero-art::after { background:none; }
+html[data-appearance='celestial'] .hero-copy h1 { font-size:clamp(43px,4.3vw,66px); }
+html[data-appearance='celestial'] .hero-copy h1 em { color:#b0aebd; }
+html[data-appearance='celestial'] .hero-copy .hero-description { font:17px/1.9 var(--serif); color:#d0ced1; max-width:470px; }
+html[data-appearance='celestial'] .course-note-label { font-size:11px; }
+html[data-appearance='celestial'] .journey-strip {
+  background:linear-gradient(125deg,#12131f,#070d17); border-radius:11px; border-color:#817c8c;
+}
+html[data-appearance='celestial'] .journey-ring {
+  background:url('/assets/celestial/cutout-76-28be1e764ca5.webp') center/100% 100% no-repeat;
+}
+html[data-appearance='celestial'] .journey-ring circle:not(.ring-value) { stroke:transparent; }
+html[data-appearance='celestial'] .journey-ring .ring-value { stroke:var(--accent); }
+html[data-appearance='celestial'] .journey-ring strong { font-size:13px; }
+html[data-appearance='celestial'] .graph-invitation {
+  background:#0b0e17 url('/assets/celestial/crop-82-4592d124aed5.webp') center top/100% 112% no-repeat;
+  border-color:#817c8c; border-radius:12px;
+}
+html[data-appearance='celestial'] .map-emblem {
+  background:url('/assets/celestial/cutout-83-9f93bfe24f85.webp') center/contain no-repeat;
+}
+html[data-appearance='celestial'] .map-emblem svg { visibility:hidden; }
+html[data-appearance='celestial'] .graph-invitation p { font-size:15px; }
+html[data-appearance='celestial'] .course-switcher a[aria-current] {
+  background:linear-gradient(180deg,#4c172c,#240a17); box-shadow:inset 0 0 0 1px #643044;
+}
+html[data-appearance='celestial'] .rail-title img {
+  content:url('/assets/celestial/cutout-17-d8e9ce92ee74.webp');
+}
+html[data-appearance='celestial'] .rail-title { font-size:21px; }
+html[data-appearance='celestial'] .contents-toggle {
+  color:transparent; background:url('/assets/celestial/cutout-3-6cfddc1981ae.webp') center/24px 20px no-repeat;
+}
+html[data-appearance='celestial'] .course-room.reading-lesson .course-scroll {
+  background-image:url('/assets/celestial/upscaled-plate-0-4daaa767f563.webp');
+  background-position:right top; background-size:100vw auto; background-repeat:no-repeat;
+}
+html[data-appearance='celestial'] .reader-toc { background:#01060d33; border-radius:7px; }
+html[data-appearance='celestial'] .reader-toc a { color:#ddd7e2; font-size:13px; }
+html[data-appearance='celestial'] .reader-toc a.active { color:var(--accent); }
+html[data-appearance='celestial'] .lesson-controls .completion-label { font-size:13px; }
+html[data-appearance='celestial'] .reader-question,
+html[data-appearance='celestial'] :is(.practice-item,.flashcard,.journal-editor,.lesson-connections,.resources-section) {
+  background-color:#0b0e17;
+}
+html[data-appearance='celestial'] .lesson-controls::before {
+  content:''; position:absolute; left:24%; top:50%; width:min(24%,280px); height:24px;
+  transform:translateY(-50%); pointer-events:none;
+  background:url('/assets/celestial/cutout-104-350ac6398446.webp') center/contain no-repeat;
+}
+/* A finite reveal: text stays still while the scene arrives behind it. */
+@media (prefers-reduced-motion:no-preference) {
+  html[data-appearance='celestial']:not([data-motion='paused']):not(.page-inactive) .welcome-art > img {
+    animation:celestial-arrive 1400ms cubic-bezier(.2,.7,.2,1) backwards;
+  }
+  html[data-appearance='celestial']:not([data-motion='paused']) .entrance[open] .entrance-art {
+    animation:celestial-opening 2400ms cubic-bezier(.2,.7,.2,1) backwards;
+  }
+  html[data-appearance='celestial']:not([data-motion='paused']):not(.page-inactive) .overview-hero .hero-art img {
+    animation:celestial-arrive 1400ms cubic-bezier(.2,.7,.2,1) backwards;
+  }
+  html[data-appearance='celestial']:not([data-motion='paused']):not(.page-inactive) .graph-invitation.art-revealed .map-emblem {
+    animation:celestial-arrive 800ms cubic-bezier(.2,.7,.2,1) backwards;
+  }
+}
+@keyframes celestial-arrive {
+  from { opacity:0; transform:translateX(12px) scale(1.025); }
+  to { opacity:1; transform:none; }
+}
+@keyframes celestial-opening {
+  from { opacity:0; transform:scale(1.07); }
+  to { opacity:1; transform:none; }
+}
+@media (max-width:1250px) and (min-width:981px) {
+  html[data-appearance='celestial'] .welcome-art { left:28px; }
+  html[data-appearance='celestial'] .welcome-copy { width:56%; }
+}
+@media (max-width:1100px) {
+  html[data-appearance='celestial'] .page-footer > span:nth-child(2)::before,
+  html[data-appearance='celestial'] .page-footer > span:nth-child(2)::after { display:none; }
+}
+@media (min-width:761px) and (max-width:1100px) {
+  .masthead { padding-inline:22px; gap:18px; }
+  .masthead nav { gap:clamp(10px,1.4vw,16px); }
+  .masthead .nav-link { white-space:nowrap; font-size:14px; }
+  .masthead .connection { white-space:nowrap; }
+  html[data-brand-art='ready'] .masthead .brand { width:clamp(150px,19vw,205px); }
+}
+@media (max-width:1200px) {
+  html[data-appearance='celestial'] .course-room.reading-lesson .course-scroll { background-image:none; }
+  html[data-appearance='celestial'] .lesson-controls::before { display:none; }
+}
+@media (max-width:980px) {
+  html[data-appearance='celestial'] .overview-hero { min-height:0; }
+  html[data-appearance='celestial'] .hero-art {
+    position:relative; inset:auto; width:100%; height:230px; mask-image:none;
+    border:1px solid var(--line); border-radius:8px; grid-row:2;
+  }
+  html[data-appearance='celestial'] .hero-art img { object-fit:cover; object-position:right center; }
+  html[data-appearance='celestial'] .hero-copy .hero-description { font-size:16px; }
+}
+@media (max-width:980px) and (min-width:761px) {
+  html[data-appearance='celestial'] .welcome-art { left:28px; width:auto; opacity:1; }
+  html[data-appearance='celestial'] .welcome-art > img { object-position:left center; }
+  html[data-appearance='celestial'] .welcome-copy { width:95%; }
+}
+@media (max-width:760px) {
+  html[data-appearance='celestial'] .welcome-copy { width:100%; max-width:none; }
+  html[data-appearance='celestial'] .welcome-art { display:none; }
+  html[data-appearance='celestial'] .entrance-art { display:none; }
+  html[data-appearance='celestial'] .hero-art { height:190px; }
+  html[data-appearance='celestial'] .graph-invitation { background-size:cover; }
+  html[data-appearance='celestial'] .hero-copy h1 { font-size:clamp(42px,9vw,56px); }
+}
